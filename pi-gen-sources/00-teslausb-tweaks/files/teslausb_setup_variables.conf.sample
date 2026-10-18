@@ -17,8 +17,8 @@ export SSID='your_ssid'
 export WIFIPASS='your_pass'
 
 # Variables for CIFS (Windows/Mac file sharing) archiving.
-# If you want to use rsync, rclone, or NFS, delete or comment out this section
-# and uncomment the rsync or rclone section below.
+# If you want to use rsync, rclone, NFS or Dropbox, delete or comment out this
+# section and uncomment the section for that below.
 export ARCHIVE_SYSTEM=cifs
 export ARCHIVE_SERVER=your_archive_name_or_ip
 export SHARE_NAME='your_archive_share/optional_path_on_share'
@@ -47,6 +47,23 @@ export SHARE_PASSWORD='password'
 #export RCLONE_PATH="remotepathname"
 # The following is optional
 #export RCLONE_FLAGS=()
+
+# Variables for Dropbox archiving
+# See doc/SetupDropbox.md in the teslausb repository for how to create a
+# Dropbox app and authorize teslausb to use it.
+# DROPBOX_PATH is the Dropbox folder to archive to. If your Dropbox app has
+# "App folder" access, this folder is inside Apps/<your app's name>.
+#export ARCHIVE_SYSTEM=dropbox
+#export DROPBOX_APP_KEY='your_app_key'
+#export DROPBOX_PATH='/TeslaCam'
+# The following are optional.
+# To set up without logging in to the Pi, set DROPBOX_REFRESH_TOKEN as printed
+# by "dropbox_archive.py authorize --print". Otherwise, run setup-teslausb
+# over ssh, and it will ask you to authorize teslausb.
+#export DROPBOX_REFRESH_TOKEN='your_refresh_token'
+# Only archive while connected to one of these wifi networks (separate them
+# with |), e.g. to avoid uploading over a phone's hotspot.
+#export DROPBOX_WIFI_SSIDS='your_home_ssid'
 
 # Variables for NFS archiving
 # Note: SHARE_NAME must be the exact export path on the NAS (e.g. /volume1/TeslaCam)

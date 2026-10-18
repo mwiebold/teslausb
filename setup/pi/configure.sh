@@ -129,6 +129,10 @@ function check_archive_configs () {
             check_variable "RCLONE_PATH"
             export ARCHIVE_SERVER="8.8.8.8" # since it's a cloud hosted drive we'll just set this to google dns
             ;;
+        dropbox)
+            check_variable "DROPBOX_PATH"
+            export ARCHIVE_SERVER="${ARCHIVE_SERVER:-api.dropboxapi.com}"
+            ;;
         cifs)
             if [ -e /backingfiles/cam_disk.bin ]
             then
@@ -167,6 +171,9 @@ function get_archive_module () {
             ;;
         rclone)
             echo "run/rclone_archive"
+            ;;
+        dropbox)
+            echo "run/dropbox_archive"
             ;;
         cifs)
             echo "run/cifs_archive"
@@ -376,6 +383,10 @@ function install_archive_scripts () {
   copy_script "$archive_module"/connect-archive.sh "$install_path"
   copy_script "$archive_module"/disconnect-archive.sh "$install_path"
   copy_script "$archive_module"/archive-is-reachable.sh "$install_path"
+  if [ "$archive_module" = "run/dropbox_archive" ]
+  then
+    copy_script "$archive_module"/dropbox_archive.py "$install_path"
+  fi
   if [ -n "${MUSIC_SHARE_NAME:+x}" ] && grep -E "cifs|nfs" <<< "$archive_module"
   then
     copy_script "$archive_module"/copy-music.sh "$install_path"

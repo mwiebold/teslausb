@@ -640,6 +640,15 @@ function diagnose {
       else
         echo "rclone archiving selected"
       fi
+    elif [ "${ARCHIVE_SYSTEM:-none}" = "dropbox" ]
+    then
+      if [ -x /root/bin/dropbox_archive.py ]
+      then
+        echo "Dropbox archiving selected"
+        /root/bin/dropbox_archive.py status || true
+      else
+        echo "ERROR: Dropbox archiving selected, but /root/bin/dropbox_archive.py is missing"
+      fi
     else
       echo "archive method: ${ARCHIVE_SYSTEM:-unset}"
     fi

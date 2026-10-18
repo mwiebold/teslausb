@@ -7,6 +7,7 @@ This is a streamlined process for setting up the Pi. You'll flash a preconfigure
 - Assumes your Pi has access to Wifi, with internet access (during setup). (But all setup methods do currently.) USB networking is still enabled for troubleshooting or manual setup
 - This image will work for either _headless_ (tested) or _manual_ (tested less) setup.
 - Currently not tested with the rclone method when using headless setup, however you can specify 'none' as the archive method in the config file, which will configure the pi as a wifi-accessible USB drive, so you can then [configure rclone](./SetupRClone.md) or [configure rsync](./SetupRSync.md) and rerun the setup-teslausb script.
+- To archive directly to Dropbox, see [the Dropbox instructions](./SetupDropbox.md).
 
 ## Configure the SD card before first boot of the Pi
 

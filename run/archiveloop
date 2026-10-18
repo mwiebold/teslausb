@@ -70,6 +70,9 @@ then
     rclone)
       export ARCHIVE_SERVER="8.8.8.8"
       ;;
+    dropbox)
+      export ARCHIVE_SERVER="api.dropboxapi.com"
+      ;;
     none)
       export ARCHIVE_SERVER=localhost
       ;;

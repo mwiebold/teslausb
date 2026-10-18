@@ -4,3 +4,4 @@
 *.ipr
 *.iws
 .idea/
+__pycache__/
